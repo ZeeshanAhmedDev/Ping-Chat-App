@@ -6,6 +6,7 @@ import 'package:pingchat/components/custom_post_container.dart';
 import 'package:pingchat/models/post_data_model.dart';
 import 'package:pingchat/screens/NewScreen/NotificationScreen.dart';
 import 'package:pingchat/screens/NewScreen/ProfileScreen.dart';
+import 'package:pingchat/screens/NewScreen/UserProfileScreens.dart';
 import 'package:pingchat/screens/user_notifications.dart';
 import 'package:pingchat/utils/const.dart';
 import 'package:badges/badges.dart';
@@ -38,7 +39,8 @@ class HomeScreen extends StatelessWidget {
               onTap: () => Navigator.push(
                   context,
                   CupertinoPageRoute(
-                    builder: (context) => ProfileScreen(),
+                    // builder: (context) => ProfileScreen(),
+                    builder: (context) => UserProfileScreens(),
                   )),
               child: CircleAvatar(
                 radius: 22,
