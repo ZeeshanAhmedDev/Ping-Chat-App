@@ -74,7 +74,8 @@ class ContactLists extends StatelessWidget {
               //     height: 360.7,
               //   ),
               // ]),
-              SvgPicture.asset(kContactListsPictureSet),
+              Image.asset('images/contactlist.png'),
+              // SvgPicture.asset(kContactListsPictureSet),
               SizedBox(
                 height: 100,
               ),

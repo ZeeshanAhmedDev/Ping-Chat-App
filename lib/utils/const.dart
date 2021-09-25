@@ -30,6 +30,9 @@ const kSettingsPicture = 'images/search_icon.svg';
 const kProfilePostPic = 'images/profile_post_post.png';
 const kShareIcon = 'images/share_icon.svg';
 const kCommentMessage = 'images/message.svg';
+const kTrashBoxActionButton = 'images/trash_box.svg';
+const kFilterOptionButton = 'images/filter_option.svg';
+const kCircularPic = 'images/ppic.png';
 
 //=============End of all svg pictures links===========
 
