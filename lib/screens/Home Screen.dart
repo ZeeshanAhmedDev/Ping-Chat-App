@@ -7,6 +7,7 @@ import 'package:pingchat/models/post_data_model.dart';
 import 'package:pingchat/screens/NewScreen/NotificationScreen.dart';
 import 'package:pingchat/screens/NewScreen/ProfileScreen.dart';
 import 'package:pingchat/screens/NewScreen/UserProfileScreens.dart';
+import 'package:pingchat/screens/search_friend.dart';
 import 'package:pingchat/screens/user_notifications.dart';
 import 'package:pingchat/utils/const.dart';
 import 'package:badges/badges.dart';
@@ -54,10 +55,17 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         actions: [
-          CustomPingLogoWidget(
-            width: 19.94,
-            height: 20.94,
-            picture: SvgPicture.asset(kActonSearchIcon),
+          GestureDetector(
+            onTap: () => Navigator.push(context, CupertinoPageRoute(
+              builder: (context) {
+                return SearchFriendScreen();
+              },
+            )),
+            child: CustomPingLogoWidget(
+              width: 19.94,
+              height: 20.94,
+              picture: SvgPicture.asset(kActonSearchIcon),
+            ),
           ),
           GestureDetector(
             onTap: () => Navigator.push(context, CupertinoPageRoute(

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pingchat/components/custom_post_container.dart';
 import 'package:pingchat/models/ProfileCatalog.dart';
+import 'package:pingchat/models/post_data_model.dart';
 import 'package:pingchat/utils/const.dart';
 
 import 'ChatScreen.dart';
@@ -141,13 +143,15 @@ class _UserProfileScreensState extends State<UserProfileScreens> {
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.person_add_alt,
-                        color: Colors.white,
-                      ),
+                      SvgPicture.asset('images/user_add_plus.svg'),
                       SizedBox(
                         width: 6,
                       ),
+                      Text(
+                        'Discover',
+                        style: TextStyle(color: Colors.white),
+                      ),
+
                       // Text(
                       //    adduser,
                       //   style: TextStyle(color: kWhiteColourWhiteColor),
@@ -176,10 +180,6 @@ class _UserProfileScreensState extends State<UserProfileScreens> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        CupertinoIcons.chat_bubble_text,
-                        color: Colors.purple,
-                      ),
                       Text(
                         'Chat',
                         style: TextStyle(color: Colors.black),
@@ -191,67 +191,31 @@ class _UserProfileScreensState extends State<UserProfileScreens> {
             ],
           ),
           SizedBox(height: 10.0),
+          Divider(
+            color: Colors.black54.withOpacity(0.1),
+            thickness: 10,
+          ),
           Expanded(
-            child: GridView.count(
-              clipBehavior: Clip.antiAlias,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              physics: BouncingScrollPhysics(),
-              crossAxisSpacing: 6,
-              crossAxisCount: 3,
-              children: List.generate(myList.length, (index) {
-                return InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => NavigationBar(),
-                      )),
-                  // child: Image.asset(
-                  //   func(index),
-                  //   fit: BoxFit.contain,
-                  // ),
-                );
-              }),
-            ),
+            child: ListView.separated(
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(
+                      height: 8,
+                      thickness: 8,
+                    ),
+                // itemCount: postItemsData.length,
+                itemCount: 1,
+                itemBuilder: (BuildContext context, int index) {
+                  return CustomPostContainer(
+                    name: postItemsData[index].name,
+                    time: postItemsData[index].time,
+                    ProfileImage: postItemsData[index].profileImage,
+                    postImage: postItemsData[index].postImage,
+                    discription: postItemsData[index].discription,
+                  );
+                }),
           ),
         ],
       ),
-
-      // Stack(
-      //   children: [
-      //     Container(
-      //       height: myHeight,
-      //       width: myWidth,
-      //       color: Colors.pink.shade100,
-      //       child: Stack(
-      //         children: [
-      //           Column(
-      //             children: [
-      //               Positioned(
-      //                 child: Padding(
-      //                   padding: EdgeInsets.only(
-      //                     left: myWidth * 0.06,
-      //                     right: myWidth * 0.06,
-      //                     top: myHeight * 0.01,
-      //                     bottom: myHeight * 0.01,
-      //                   ),
-      //                   child: Image.asset(kProfilePostPic),
-      //                 ),
-      //               ),
-      //               CircleAvatar(
-      //                 radius: 50,
-      //                 backgroundColor: Colors.black54,
-      //                 backgroundImage: NetworkImage(
-      //                   'https://www.adcchesterton.com/assets/images/switch-missing.png',
-      //                   scale: 22,
-      //                 ),
-      //               ),
-      //             ],
-      //           ),
-      //         ],
-      //       ),
-      //     )
-      //   ],
-      // ),
     );
   }
 }

@@ -27,6 +27,8 @@ class _UserNotificationsState extends State<UserNotifications> {
     '1 hour Ago',
   ];
 
+  bool selected = true;
+// final selectedKey = GlobalKey<selected>;
   @override
   Widget build(BuildContext context) {
     double myHeight = MediaQuery.of(context).size.height;
@@ -143,11 +145,11 @@ class _UserNotificationsState extends State<UserNotifications> {
                           ),
                         ),
                         onTap: () {
-                          bool isClicked = false;
-
-                          if (isClicked == true) {
-                            SvgPicture.asset(kFilterOptionButton);
-                          }
+                          setState(() {
+                            selected
+                                ? print('Selected')
+                                : print('not selected');
+                          });
                         },
                       ),
                       Positioned(
