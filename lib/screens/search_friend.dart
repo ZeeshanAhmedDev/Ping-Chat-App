@@ -8,6 +8,7 @@ import 'package:pingchat/utils/const.dart';
 
 import 'NewScreen/ChatScreen.dart';
 import 'NewScreen/UserProfileScreens.dart';
+import 'NewScreen/friends_with_suggestions_all_friends_tabs.dart';
 
 class SearchFriendScreen extends StatefulWidget {
   const SearchFriendScreen({Key? key}) : super(key: key);
@@ -52,13 +53,19 @@ class _SearchFriendScreenState extends State<SearchFriendScreen> {
               padding: EdgeInsets.only(top: myHeight * 0.03),
               child: GestureDetector(
                 // onTap: () => Navigator.pop(context),
-                onTap: () => Navigator.pop(context),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FriendsWithTwoTabs(),
+                    )),
                 child: Padding(
                   padding: EdgeInsets.only(left: myWidth * 0.08),
-                  child: SvgPicture.asset(
-                    'images/cancel.svg',
-                    color: Color(0xFF6B6B6B),
-                    fit: BoxFit.scaleDown,
+                  child: GestureDetector(
+                    child: SvgPicture.asset(
+                      'images/cancel.svg',
+                      color: Color(0xFF6B6B6B),
+                      fit: BoxFit.scaleDown,
+                    ),
                   ),
                 ),
               ),
@@ -66,7 +73,11 @@ class _SearchFriendScreenState extends State<SearchFriendScreen> {
             title: Padding(
               padding: EdgeInsets.only(top: myHeight * 0.03),
               child: GestureDetector(
-                onTap: () => Navigator.pop(context),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FriendsWithTwoTabs(),
+                    )),
                 child: Text(
                   'Search Friends',
                   style: TextStyle(
@@ -104,30 +115,32 @@ class _SearchFriendScreenState extends State<SearchFriendScreen> {
                   child: TextFormField(
                     cursorColor: kCustomContainerColor,
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xFFf1f1f1),
                       prefixIcon: Icon(
                         Icons.search,
                         color: kCustomContainerColor,
                       ),
+
                       alignLabelWithHint: true,
                       contentPadding: EdgeInsets.all(20),
                       // focusColor: kCustomContainerColor,
                       labelText: 'Search friends',
                       labelStyle: TextStyle(
                         height: 2,
-                        color: Colors.black,
+                        color: Colors.black.withOpacity(0.3),
                         backgroundColor: Colors.transparent,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         // fontFamily: 'Lato-Bold.ttf',
                       ),
                       border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(30),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide(
-                          color: kCustomContainerColor,
-                        ),
+                        borderSide: BorderSide.none,
                       ),
                     ),
                     style: TextStyle(
@@ -145,8 +158,8 @@ class _SearchFriendScreenState extends State<SearchFriendScreen> {
                     physics: BouncingScrollPhysics(),
                     separatorBuilder: (BuildContext context, int index) =>
                         const Divider(
-                          height: 8,
-                          thickness: 8,
+                          height: 2,
+                          thickness: 1,
                         ),
                     itemCount: MySearchFriend.myFriendSubtitle.length,
                     itemBuilder: (BuildContext context, int index) {
